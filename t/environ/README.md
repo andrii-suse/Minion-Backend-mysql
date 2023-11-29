@@ -21,7 +21,7 @@ cd t
 It is assumed all prerequisite of Minion-Backend-mysql are installed properly.
 The testing needs environ package, install it using instructions:
 
-https://github.com/andrii-suse/environ/blob/master/README.txt
+https://github.com/andrii-suse/environ/blob/master/INSTALL.txt
 
 
 #### Challenge 1: By default, a container is destroyed when the test finishes.

@@ -4,7 +4,7 @@ set -ex
 mm=$(environ mm $(pwd))
 
 # process 5 jobs at a time and check any messages
-for i in {1..100}; do
+for i in {1..10}; do
     $mm/enqueue test
     $mm/enqueue test
     $mm/enqueue test

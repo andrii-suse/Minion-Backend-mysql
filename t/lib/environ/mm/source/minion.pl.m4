@@ -47,7 +47,7 @@ if ($operation eq 'shoot') {
 if ($operation eq 'start') {
     get '/' => {text => "Hello World! : use /minion path to access minion\n"};
 
-    my $port   = __port;
+    my $port   = int("__port") // 3000;
     my $daemon = Mojo::Server::Daemon->new(
         app    => app,
         listen => ["http://*:$port"]

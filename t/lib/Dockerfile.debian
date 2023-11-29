@@ -1,0 +1,21 @@
+FROM debian
+ENV container docker
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update
+RUN apt -y install vim curl gpg
+RUN echo 'deb http://download.opensuse.org/repositories/home:andriinikitin:environ/deb/ /' > /etc/apt/sources.list.d/environ.list
+RUN echo 'deb http://download.opensuse.org/repositories/home:andriinikitin/deb/ /' > /etc/apt/sources.list.d/andriinikitin.list
+
+RUN curl -fsSL http://download.opensuse.org/repositories/home:andriinikitin:environ/deb/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/environ.gpg
+RUN curl -fsSL http://download.opensuse.org/repositories/home:andriinikitin/deb/Release.key | gpg --dearmor | tee /etc/apt/trusted.gpg.d/andriinikitin.gpg
+
+RUN echo 1
+RUN apt update
+RUN apt -y install environ mariadb-server sudo m4 git-core libmojolicious-perl libminion-perl libmojo-mysql-perl
+
+WORKDIR /opt/project
+ENV TZ UTC
+
+ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]

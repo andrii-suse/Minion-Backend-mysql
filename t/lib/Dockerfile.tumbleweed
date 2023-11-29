@@ -1,0 +1,15 @@
+FROM opensuse/tumbleweed
+ENV container docker
+
+ENV LANG en_US.UTF-8
+
+RUN zypper ar -f http://download.opensuse.org/repositories/openSUSE:infrastructure:MirrorCache/openSUSE_Tumbleweed mc
+RUN zypper --gpg-auto-import-keys ref
+
+# install dependencies
+RUN zypper -vvv -n install vim mariadb mariadb-server curl sudo wget m4 make git-core perl-Mojolicious perl-Minion perl-Mojo-mysql environ
+
+WORKDIR /opt/project
+ENV TZ UTC
+
+ENTRYPOINT ["/usr/bin/tail", "-f", "/dev/null"]
